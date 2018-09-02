@@ -1,0 +1,38 @@
+<template>
+  <div>
+    <b-navbar toggleable="md" type="dark" variant="info">
+
+      <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+
+      <b-navbar-brand href="#">Account Manager</b-navbar-brand>
+
+      <b-collapse is-nav id="nav_collapse">
+
+      <b-navbar-nav class="ml-auto">
+
+        <b-nav-item-dropdown text="Views">
+          <router-link to="/viewall">View all accounts</router-link>
+          <router-link to="/search">Search accounts</router-link>
+        </b-nav-item-dropdown>
+
+        <b-nav-item-dropdown text="Accounts">
+          <router-link to="/addordelete">Add/Delete account</router-link>
+          <router-link to="/update">Update account</router-link>
+        </b-nav-item-dropdown>
+
+      </b-navbar-nav>
+
+      </b-collapse>
+    </b-navbar>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'NavigationBar'
+}
+</script>
+
+<style>
+
+</style>

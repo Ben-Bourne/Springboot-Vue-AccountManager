@@ -5,6 +5,7 @@ import com.qa.SpringbootVueAccountManager.service.business.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value="/api")
 public class AccountController {
@@ -23,8 +24,8 @@ public class AccountController {
         return accountService.getAllAccounts();
     }
 
-    @RequestMapping(value="/delete", method= RequestMethod.DELETE)
-    public @ResponseBody String deleteAccount (@RequestBody long id) {
+    @RequestMapping(value="/delete/{id}", method= RequestMethod.DELETE)
+    public @ResponseBody String deleteAccount (@PathVariable long id) {
 
         return accountService.deleteAccount(id);
     }

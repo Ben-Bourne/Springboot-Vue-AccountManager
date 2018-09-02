@@ -1,13 +1,24 @@
 <template>
   <div>
     <NavigationBar></NavigationBar>
-    <h1>This is the view all</h1>
-    <div>
-      <div class="account" v-for="account in accounts" :key="account.id">
-        <h1>Title: {{ account.title }}</h1>
-        <p>Description: {{ account.body }}</p>
-      </div>
-    </div>
+    <table class="table table-striped table-borders">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Account Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="account in accounts">
+          <td>{{ account.id }}</td>
+          <td>{{ account.firstName }}</td>
+          <td>{{ account.lastName }}</td>
+          <td>{{ account.accountNumber }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -29,13 +40,13 @@ export default {
       accounts: []
     }
   },
-  mounted: function(){
+  mounted(){
     this.loadAccount();
   },
   methods: {
     loadAccount: function(){
       var vm = this;
-      axios.get('http://locatlhost:8080/api/getall')
+      axios.get('http://localhost:8080/api/getall')
       .then(function(response){
         console.log(response);
         vm.accounts = response.data;

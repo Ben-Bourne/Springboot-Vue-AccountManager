@@ -5,6 +5,8 @@ import com.qa.SpringbootVueAccountManager.service.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AccountServiceImpl implements AccountService{
 
@@ -18,6 +20,12 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
+    public Optional<Account> findAccount(Long id) {
+
+        return repository.findById(id);
+    }
+
+    @Override
     public Account addAccount(Account account) {
         repository.save(account);
         return account;
@@ -25,9 +33,6 @@ public class AccountServiceImpl implements AccountService{
 
     @Override
     public Account updateAccount(Account account) {
-        long id = account.getId();
-        repository.deleteById(id);
-        account.setId(id);
         repository.save(account);
         return account;
     }

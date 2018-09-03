@@ -1,14 +1,20 @@
 <template>
-  <div>
+  <div style="background-color:lightblue; height: 400px">
     <NavigationBar></NavigationBar>
-    <div align="left" style="background-color:lightblue">
+    <div style="position: absolute; left: 100px;" align="left">
       <br>
-      <p>ID     : <input v-model="Account.id"></p>
-      <p>First name     : <input v-model="Account.firstName"></p>
-      <p>Last name      : <input v-model="Account.lastName"></p>
-      <p>Account number : <input v-model="Account.accountNumber"></p>
+      <p>ID     :</p>
+      <p>First name     :</p>
+      <p>Last name      :</p>
+      <p>Account number :</p>
       <p><button type="submit" class="button" @click="addAccount">Submit</button></p>
       <br>
+    </div>
+    <div style="position: absolute; left: 300px; top: 150px">
+      <p><input v-model="Account.id"></p>
+      <p><input v-model="Account.firstName"></p>
+      <p><input v-model="Account.lastName"></p>
+      <p><input v-model="Account.accountNumber"></p>
     </div>
   </div>
 </template>
@@ -36,6 +42,7 @@ export default {
       }
       console.log(addUser);
       axios.put('http://localhost:8080/api/update', addUser)
+      .then(alert("Account updated"))
       .catch(function(error){
         console.log(error);
       });

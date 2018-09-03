@@ -29,6 +29,3 @@ public class App {
 		};
 	}
 }
-//what went well
-//what didnt go well
-//what would you change

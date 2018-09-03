@@ -1,20 +1,23 @@
 <template>
-  <div>
+  <div style="background-color:lightblue; height: 500px">
     <NavigationBar></NavigationBar>
-    <div align="left" style="background-color:lightblue">
-      <br>
-      <p>First name     : <input v-model="Account.firstName"></p>
-      <p>Last name      : <input v-model="Account.lastName"></p>
-      <p>Account number : <input v-model="Account.accountNumber"></p>
+    <br>
+    <div style="position: absolute; left: 100px;" align="left">
+      <p>First name     : </p>
+      <p>Last name      : </p>
+      <p>Account number : </p>
       <p><button type="submit" class="button" @click="addAccount">Submit</button></p>
-      <br>
+    </div>
+    <div style="position: absolute; left: 300px;">
+      <p><input v-model="Account.firstName"></p>
+      <p><input v-model="Account.lastName"></p>
+      <p><input v-model="Account.accountNumber"></p>
     </div>
     <br>
-    <br>
-    <div align="left" style="background-color:lightblue">
+    <div>
       <br>
-      <p>ID: <input v-model="id"></p>
-      <p><button type="submit" class="button" @click="deleteAccount">Delete</button></p>
+      <p style="position: absolute; left: 100px; top: 400px" align="left">ID: </p><input v-model="id" style="position: absolute; left: 300px; top: 400px">
+      <p style="position: absolute; left: 100px; top: 450px"><button type="submit" class="button" @click="deleteAccount">Delete</button></p>
       <br>
     </div>
   </div>
@@ -43,6 +46,7 @@ export default {
       }
       console.log(addUser);
       axios.post('http://localhost:8080/api/add', addUser)
+      .then(alert("Account added"))
       .catch(function(error){
         console.log(error);
       });
@@ -50,6 +54,7 @@ export default {
     deleteAccount(){
       console.log(this.id);
       axios.delete('http://localhost:8080/api/delete/' + this.id)
+      .then(alert("Account deleted"))
       .catch(function(error){
         console.log(error);
       });
